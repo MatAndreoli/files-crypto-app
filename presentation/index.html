@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="pt-br"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Cripto &amp; Estego Pro - Apresentação</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "tertiary-fixed-dim": "#e5b5ff",
+              "secondary-container": "#7000ff",
+              "error-container": "#93000a",
+              "error": "#ffb4ab",
+              "on-secondary-fixed-variant": "#5700c9",
+              "surface-container": "#201f20",
+              "on-tertiary-fixed-variant": "#7000a8",
+              "on-tertiary": "#4e0078",
+              "tertiary-container": "#efceff",
+              "tertiary": "#fff2ff",
+              "surface-container-high": "#2a2a2b",
+              "surface": "#131314",
+              "primary-fixed-dim": "#00dbe9",
+              "on-primary": "#00363a",
+              "on-secondary": "#3c0090",
+              "inverse-primary": "#006970",
+              "outline-variant": "#3b494b",
+              "tertiary-fixed": "#f4d9ff",
+              "on-tertiary-container": "#9300dc",
+              "surface-dim": "#131314",
+              "on-secondary-container": "#ddcdff",
+              "background": "#131314",
+              "primary-fixed": "#7df4ff",
+              "surface-container-low": "#1c1b1c",
+              "on-tertiary-fixed": "#30004b",
+              "surface-container-lowest": "#0e0e0f",
+              "on-primary-container": "#006970",
+              "on-error": "#690005",
+              "on-surface-variant": "#b9cacb",
+              "on-surface": "#e5e2e3",
+              "on-primary-fixed": "#002022",
+              "on-error-container": "#ffdad6",
+              "primary-container": "#00f0ff",
+              "on-primary-fixed-variant": "#004f54",
+              "surface-container-highest": "#353436",
+              "secondary-fixed": "#e9ddff",
+              "primary": "#dbfcff",
+              "on-secondary-fixed": "#23005b",
+              "surface-variant": "#353436",
+              "inverse-on-surface": "#313031",
+              "on-background": "#e5e2e3",
+              "surface-tint": "#00dbe9",
+              "secondary-fixed-dim": "#d1bcff",
+              "secondary": "#d1bcff",
+              "inverse-surface": "#e5e2e3",
+              "surface-bright": "#3a393a",
+              "outline": "#849495"
+            },
+            fontFamily: {
+              "headline": ["Space Grotesk"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #131314;
+            color: #e5e2e3;
+            overflow: hidden;
+            font-family: 'Inter', sans-serif;
+        }
+        .glass-card {
+            background: rgba(32, 31, 32, 0.6);
+            backdrop-filter: blur(16px);
+            border-top: 1px solid rgba(132, 148, 149, 0.15);
+            border-left: 1px solid rgba(132, 148, 149, 0.15);
+        }
+        .neon-glow {
+            text-shadow: 0 0 20px rgba(0, 219, 233, 0.4);
+        }
+        .slide-container {
+            display: flex;
+            width: 500vw;
+            height: 100vh;
+            transition: transform 0.8s cubic-bezier(0.65, 0, 0.35, 1);
+        }
+        .slide {
+            width: 100vw;
+            height: 100vh;
+            flex-shrink: 0;
+            padding: 8rem 6rem;
+            position: relative;
+        }
+        .bg-mesh {
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(112, 0, 255, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(0, 219, 233, 0.05) 0%, transparent 50%);
+        }
+    </style>
+</head>
+<body class="dark bg-background text-on-background selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopAppBar (Progress Anchor) -->
+<header class="fixed top-0 left-0 w-full z-50 bg-[#131314]/40 backdrop-blur-xl flex justify-between items-center w-full px-24 py-8 shadow-[0_0_40px_0_rgba(0,219,233,0.08)] bg-[#1c1b1c] shadow-[0_1px_0_0_rgba(59,73,75,0.15)]">
+<div class="text-xl font-bold tracking-tighter text-[#dbfcff] font-['Space_Grotesk']">
+            Cripto &amp; Estego Pro
+        </div>
+<nav class="hidden md:flex gap-12 items-center">
+<a class="font-['Space_Grotesk'] tracking-tight uppercase text-xs font-bold text-[#00dbe9] border-b-2 border-[#00dbe9] pb-1 transition-all duration-300" href="#slide1">Slide 01</a>
+<a class="font-['Space_Grotesk'] tracking-tight uppercase text-xs font-bold text-[#e5e2e3]/60 hover:text-[#00dbe9] transition-colors transition-all duration-300" href="#slide2">Slide 02</a>
+<a class="font-['Space_Grotesk'] tracking-tight uppercase text-xs font-bold text-[#e5e2e3]/60 hover:text-[#00dbe9] transition-colors transition-all duration-300" href="#slide3">Slide 03</a>
+<a class="font-['Space_Grotesk'] tracking-tight uppercase text-xs font-bold text-[#e5e2e3]/60 hover:text-[#00dbe9] transition-colors transition-all duration-300" href="#slide4">Slide 04</a>
+<a class="font-['Space_Grotesk'] tracking-tight uppercase text-xs font-bold text-[#e5e2e3]/60 hover:text-[#00dbe9] transition-colors transition-all duration-300" href="#slide5">Slide 05</a>
+</nav>
+<div class="flex gap-4 items-center">
+<button class="material-symbols-outlined text-[#e5e2e3]/60 hover:text-[#00dbe9] active:scale-95 transition-all">info</button>
+<button class="material-symbols-outlined text-[#e5e2e3]/60 hover:text-[#00dbe9] active:scale-95 transition-all">settings</button>
+</div>
+</header>
+<main class="slide-container" id="main-slider">
+<!-- Slide 1: Capa -->
+<section class="slide flex flex-col justify-center items-start" id="slide1">
+<div class="bg-mesh"></div>
+<div class="max-w-4xl">
+<span class="inline-block px-4 py-1 rounded-full bg-secondary-container/20 text-secondary border border-secondary/20 font-label text-xs tracking-widest uppercase mb-6">Security Project 2024</span>
+<h1 class="font-headline text-[5rem] leading-[1] font-bold tracking-tighter text-primary neon-glow mb-8">
+                    Cripto &amp; <br/>Estego Pro
+                </h1>
+<p class="font-headline text-2xl text-on-surface-variant font-light tracking-tight max-w-2xl mb-12">
+                    Segurança da Informação: Uma abordagem editorial em criptografia e ocultação de dados.
+                </p>
+<div class="flex flex-col gap-2">
+<p class="font-label text-xs uppercase tracking-[0.3em] text-on-surface-variant/60">Apresentação do Projeto</p>
+<p class="font-headline text-xl text-primary-fixed-dim font-medium">Integrantes: Matheus Andreoli (230022942) e Gabriel Araújo ()</p>
+</div>
+</div>
+<!-- Decorative Visual -->
+<div class="absolute right-24 bottom-24 w-96 h-96 rounded-full bg-primary/5 blur-[120px]"></div>
+</section>
+<!-- Slide 2: Tipos de Criptografia -->
+<section class="slide flex flex-col justify-center" id="slide2">
+<div class="bg-mesh"></div>
+<h2 class="font-headline text-4xl font-bold tracking-tight text-primary mb-16 border-l-4 border-primary pl-8">Criptografia Utilizada</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Card 1 -->
+<div class="glass-card p-10 rounded-xl hover:shadow-[0_0_40px_rgba(0,219,233,0.08)] transition-all group">
+<span class="material-symbols-outlined text-4xl text-primary-fixed-dim mb-6 block group-hover:scale-110 transition-transform">lock</span>
+<h3 class="font-headline text-2xl font-bold text-on-surface mb-4">Simétrica</h3>
+<p class="text-on-surface-variant leading-relaxed text-sm mb-6">Utiliza o padrão ouro da criptografia atual: <strong>AES-256</strong>, operando nos modos <strong>GCM (Galois/Counter Mode)</strong>, que oferece autenticação integrada, e <strong>CBC (Cipher Block Chaining)</strong>. É o método ideal para cifrar arquivos ilimitados de forma extremamente rápida, protegendo os dados mediante comprovação de uma senha através do algoritmo robusto PBKDF2-HMAC-SHA256.</p>
+<div class="text-[10px] font-label tracking-widest text-primary/40 uppercase">High Performance Standard</div>
+</div>
+<!-- Card 2 -->
+<div class="glass-card p-10 rounded-xl hover:shadow-[0_0_40px_rgba(112,0,255,0.08)] transition-all group">
+<span class="material-symbols-outlined text-4xl text-secondary mb-6 block group-hover:scale-110 transition-transform">key_visualizer</span>
+<h3 class="font-headline text-2xl font-bold text-on-surface mb-4">Assimétrica Híbrida</h3>
+<p class="text-on-surface-variant leading-relaxed text-sm mb-6">Como algoritmos assimétricos (RSA) são lentos com grandes massas de dados, este método usa o <strong>RSA-2048</strong> apenas para criptografar uma chave randômica (AES) efêmera. O arquivo real é integralmente cifrado com a velocidade incomparável do <strong>AES-256</strong>. O benefício é resolver a troca segura de chaves à distância usando chaves públicas, suportando carga de trabalho massiva.</p>
+<div class="text-[10px] font-label tracking-widest text-secondary/40 uppercase">Public Key Infrastructure</div>
+</div>
+<!-- Card 3 -->
+<div class="glass-card p-10 rounded-xl hover:shadow-[0_0_40px_rgba(239,206,255,0.08)] transition-all group">
+<span class="material-symbols-outlined text-4xl text-tertiary-fixed-dim mb-6 block group-hover:scale-110 transition-transform">visibility_off</span>
+<h3 class="font-headline text-2xl font-bold text-on-surface mb-4">Esteganografia</h3>
+<p class="text-on-surface-variant leading-relaxed text-sm mb-6">Aplica o conceito de "segurança pela obscuridade" com a técnica de ofuscação <strong>LSB (Least Significant Bit)</strong>. O software modifica sorrateiramente os pixels finais dos canais de cor da imagem de cobertura, disfarçando que algo aconteceu. Dessa forma é possível embutir <strong>mensagens cifradas e até arquivos binários ocultos inteiros</strong> sem deixar rastro visual que afete a imagem original.</p>
+<div class="text-[10px] font-label tracking-widest text-tertiary/40 uppercase">Visual Obfuscation</div>
+</div>
+</div>
+</section>
+<!-- Slide 3: Funcionalidades Principais -->
+<section class="slide flex flex-col justify-center" id="slide3">
+<div class="bg-mesh"></div>
+<h2 class="font-headline text-4xl font-bold tracking-tight text-primary mb-16 border-l-4 border-primary pl-8">Módulos Principais do Sistema</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10 max-w-6xl">
+
+<div class="flex gap-6 items-start group">
+    <div class="w-16 h-16 rounded-full bg-primary-container/10 flex items-center justify-center shrink-0 group-hover:bg-primary-container/30 transition-colors">
+        <span class="material-symbols-outlined text-3xl text-primary-fixed-dim">enhanced_encryption</span>
+    </div>
+    <div>
+        <h3 class="font-headline text-xl font-bold text-on-surface mb-2">Criptografia de Arquivos</h3>
+        <p class="text-on-surface-variant text-sm leading-relaxed">Cifra e decifra qualquer tipo de arquivo nativamente usando chaves públicas/privadas ou senha mestre. Otimizado GCM/CBC para suportar alta carga sem problemas.</p>
+    </div>
+</div>
+
+<div class="flex gap-6 items-start group">
+    <div class="w-16 h-16 rounded-full bg-secondary-container/10 flex items-center justify-center shrink-0 group-hover:bg-secondary-container/30 transition-colors">
+        <span class="material-symbols-outlined text-3xl text-secondary">image</span>
+    </div>
+    <div>
+        <h3 class="font-headline text-xl font-bold text-on-surface mb-2">Motor Esteganográfico LSB</h3>
+        <p class="text-on-surface-variant text-sm leading-relaxed">Laboratório de ofuscação que permite esconder relatórios confidenciais, textos ou binários inteiros direto nos pixels das fotografias em formato PNG de capa perfeita.</p>
+    </div>
+</div>
+
+<div class="flex gap-6 items-start group">
+    <div class="w-16 h-16 rounded-full bg-tertiary-container/10 flex items-center justify-center shrink-0 group-hover:bg-tertiary-container/30 transition-colors">
+        <span class="material-symbols-outlined text-3xl text-tertiary-fixed-dim">analytics</span>
+    </div>
+    <div>
+        <h3 class="font-headline text-xl font-bold text-on-surface mb-2">Benchmarking e Relatórios</h3>
+        <p class="text-on-surface-variant text-sm leading-relaxed">Uma fábrica de testes embutida! Estressa o sistema sinteticamente e gera em tempo real PDFs detalhados combinando fpdf2, matriz geométrica Matplotlib e Pandas.</p>
+    </div>
+</div>
+
+<div class="flex gap-6 items-start group">
+    <div class="w-16 h-16 rounded-full bg-surface-container-highest/50 flex items-center justify-center shrink-0 group-hover:bg-surface-container-highest transition-colors border border-outline-variant/10">
+        <span class="material-symbols-outlined text-3xl text-on-surface">database</span>
+    </div>
+    <div>
+        <h3 class="font-headline text-xl font-bold text-on-surface mb-2">Trilha de Auditoria (Logs)</h3>
+        <p class="text-on-surface-variant text-sm leading-relaxed">Banco SQLite silencioso que captura eventos passivos cruciais: algoritmos utilizados, tamanho do envelope em bytes e demografia dos tempos de processamento do app.</p>
+    </div>
+</div>
+
+</div>
+</section>
+
+<!-- Slide 4: Comparativo -->
+<section class="slide flex flex-col justify-center" id="slide4">
+<div class="bg-mesh"></div>
+<h2 class="font-headline text-4xl font-bold tracking-tight text-primary mb-16 border-l-4 border-primary pl-8">Comparação de Tecnologias</h2>
+<div class="w-full overflow-hidden rounded-xl bg-surface-container-lowest border border-outline-variant/10">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-high">
+<th class="p-6 font-headline text-xs uppercase tracking-widest text-on-surface-variant">Metodologia</th>
+<th class="p-6 font-headline text-xs uppercase tracking-widest text-on-surface-variant">Vantagens</th>
+<th class="p-6 font-headline text-xs uppercase tracking-widest text-on-surface-variant">Processamento</th>
+<th class="p-6 font-headline text-xs uppercase tracking-widest text-on-surface-variant">Contexto</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/10">
+<tr class="hover:bg-primary/5 transition-colors">
+<td class="p-6 font-bold text-primary-fixed-dim font-headline">AES Puro (Simétrica)</td>
+<td class="p-6 text-sm text-on-surface-variant">Cifra e decifra instantaneamente gigabytes de dados. Consome mínima RAM e processamento computacional, sendo perfeito para cofres e backups locais massivos.</td>
+<td class="p-6"><span class="px-3 py-1 bg-primary-container/10 text-primary-fixed-dim text-[10px] rounded-full uppercase font-bold">Muito Baixo</span></td>
+<td class="p-6 text-sm italic text-outline">Exige que ambas as pontas conheçam antecipadamente e guardem a mesma senha em extremo segredo.</td>
+</tr>
+<tr class="hover:bg-secondary/5 transition-colors">
+<td class="p-6 font-bold text-secondary font-headline">Híbrida (RSA + AES)</td>
+<td class="p-6 text-sm text-on-surface-variant">Resolve o perigo de compartilhar senhas pela internet envelopando a chave simétrica com um cadeado RSA, mas mantendo a velocidade alucinante do AES no arquivo em si.</td>
+<td class="p-6"><span class="px-3 py-1 bg-secondary-container/10 text-secondary text-[10px] rounded-full uppercase font-bold">Moderado</span></td>
+<td class="p-6 text-sm italic text-outline">O método ideal para comunicação entre pessoas/computadores distantes (baseia a rede bancária e o TLS).</td>
+</tr>
+<tr class="hover:bg-tertiary/5 transition-colors">
+<td class="p-6 font-bold text-tertiary-fixed-dim font-headline">Esteganografia (LSB)</td>
+<td class="p-6 text-sm text-on-surface-variant">Vai além da criptografia clássica: mascara o fato de que há uma comunicação. Ótimo para transmitir inteligência ou ferramentas confidenciais cruzando filtros de monitoramento visual.</td>
+<td class="p-6"><span class="px-3 py-1 bg-tertiary-container/10 text-tertiary-fixed-dim text-[10px] rounded-full uppercase font-bold">Muito Alto</span></td>
+<td class="p-6 text-sm italic text-outline">O volume em megabytes do dado escondido é proporcionalmente amarrado à contagem de pixels da imagem hospedeira.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<!-- Slide 5: Fechamento -->
+<section class="slide flex flex-col justify-center items-center text-center" id="slide5">
+<div class="bg-mesh"></div>
+<div class="max-w-3xl relative">
+<!-- Abstract Decorative Element -->
+<div class="absolute -top-24 -left-24 w-48 h-48 bg-secondary blur-[80px] opacity-20"></div>
+<h2 class="font-headline text-5xl font-bold tracking-tight text-primary mb-8">Conclusão</h2>
+<div class="h-1 w-24 bg-gradient-to-r from-primary to-secondary mx-auto mb-10"></div>
+<p class="font-body text-xl text-on-surface leading-relaxed mb-20 opacity-90">
+                    "Um sistema completo que une a robustez da criptologia moderna e versatilidade da esteganografia para criar camadas intransponíveis de privacidade."
+                </p>
+<h3 class="font-headline text-8xl font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-br from-primary via-primary-fixed-dim to-secondary mb-12 uppercase italic">
+                    Obrigado!
+                </h3>
+<div class="flex gap-4 justify-center">
+<div class="flex items-center gap-2 bg-surface-container px-6 py-2 rounded-full border border-outline-variant/20">
+<span class="material-symbols-outlined text-sm text-primary">terminal</span>
+<span class="text-xs font-label uppercase tracking-widest text-on-surface-variant">v1.0.4-stable</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar (Navigation Anchors) -->
+<footer class="fixed bottom-0 left-0 w-full z-50 flex justify-between items-center w-full px-24 pb-12 bg-transparent">
+<button class="flex items-center gap-4 text-[#00dbe9] bg-[#1c1b1c]/80 backdrop-blur-md px-8 py-3 rounded-md border border-[#3b494b]/15 transition-all duration-500 hover:bg-[#dbfcff] hover:text-[#131314] hover:shadow-[0_0_20px_rgba(0,219,233,0.4)] active:translate-y-1" id="prevBtn">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+<span class="font-['Space_Grotesk'] text-sm font-medium uppercase tracking-widest">Previous</span>
+</button>
+<div class="flex gap-2">
+<div class="w-12 h-1 bg-primary/20 rounded-full overflow-hidden">
+<div class="w-1/4 h-full bg-primary transition-all duration-500" id="progress-bar"></div>
+</div>
+</div>
+<button class="flex items-center gap-4 bg-[#00dbe9] text-[#131314] px-8 py-3 rounded-md font-bold transition-all duration-500 hover:bg-[#dbfcff] hover:shadow-[0_0_20px_rgba(0,219,233,0.4)] active:translate-y-1" id="nextBtn">
+<span class="font-['Space_Grotesk'] text-sm font-medium uppercase tracking-widest">Next</span>
+<span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</footer>
+<script>
+        // Slide Logic (Simple state management for transitions)
+        let currentSlide = 0;
+        const totalSlides = 5;
+        const slider = document.getElementById('main-slider');
+        const nextBtn = document.getElementById('nextBtn');
+        const prevBtn = document.getElementById('prevBtn');
+        const progressBar = document.getElementById('progress-bar');
+        const navLinks = document.querySelectorAll('nav a');
+
+        function updateSlide() {
+            slider.style.transform = `translateX(-${currentSlide * 100}vw)`;
+            progressBar.style.width = `${((currentSlide + 1) / totalSlides) * 100}%`;
+            
+            // Update Active Nav Link UI
+            navLinks.forEach((link, index) => {
+                if(index === currentSlide) {
+                    link.className = "font-['Space_Grotesk'] tracking-tight uppercase text-xs font-bold text-[#00dbe9] border-b-2 border-[#00dbe9] pb-1 transition-all duration-300";
+                } else {
+                    link.className = "font-['Space_Grotesk'] tracking-tight uppercase text-xs font-bold text-[#e5e2e3]/60 hover:text-[#00dbe9] transition-colors transition-all duration-300";
+                }
+            });
+
+            // Disable buttons at boundaries
+            prevBtn.style.opacity = currentSlide === 0 ? "0.3" : "1";
+            prevBtn.style.pointerEvents = currentSlide === 0 ? "none" : "auto";
+            
+            nextBtn.style.opacity = currentSlide === totalSlides - 1 ? "0.3" : "1";
+            nextBtn.style.pointerEvents = currentSlide === totalSlides - 1 ? "none" : "auto";
+        }
+
+        nextBtn.addEventListener('click', () => {
+            if (currentSlide < totalSlides - 1) {
+                currentSlide++;
+                updateSlide();
+            }
+        });
+
+        prevBtn.addEventListener('click', () => {
+            if (currentSlide > 0) {
+                currentSlide--;
+                updateSlide();
+            }
+        });
+
+        // Handle direct nav link clicks
+        navLinks.forEach((link, index) => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                currentSlide = index;
+                updateSlide();
+            });
+        });
+
+        // Handle Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight') nextBtn.click();
+            if (e.key === 'ArrowLeft') prevBtn.click();
+        });
+
+        // Initialize state
+        updateSlide();
+    </script>
+</body></html>

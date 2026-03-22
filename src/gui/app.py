@@ -378,6 +378,7 @@ class CryptoApp(ctk.CTk):
 
         self.bench_vars = {
             10: ctk.BooleanVar(value=True),
+            25: ctk.BooleanVar(value=True),
             50: ctk.BooleanVar(value=True),
             100: ctk.BooleanVar(value=True),
             250: ctk.BooleanVar(value=True),
@@ -459,7 +460,7 @@ class CryptoApp(ctk.CTk):
                         prog.set(1.0)
                         status_lbl.configure(text="✅")
                     else:
-                        # Operação pulada (stego >50MB) — criar linha já concluída
+                        # Operação pulada (stego >100MB) — criar linha já concluída
                         row = ctk.CTkFrame(self.bench_scroll, fg_color="transparent")
                         row.pack(fill="x", pady=2, padx=5)
                         row.columnconfigure(1, weight=1)

@@ -41,8 +41,8 @@ def _generate_test_image(size_mb: int, filepath: str):
     suficiente. Porém imagens de 500MB de RAM podem travar o PC do usuário.
     Limitaremos o benchmark de esteganografia a até 50MB.
     """
-    if size_mb > 50:
-        return None  # Pular estego para arquivos enormes
+    if size_mb >= 100:
+        return None  # Pular estego a partir de 100MB
 
     os.makedirs(os.path.dirname(filepath), exist_ok=True)
     # Aproximação segura: (size_mb * 3_200_000) pixels
@@ -145,8 +145,8 @@ def run_benchmarks(sizes_mb: list[int], logger: OperationLogger, progress_callba
         bm_rsa_dec()
         update_progress(f"RSA-Híbrido Decrypt {size}MB")
 
-        # Esteganografia (apenas se <= 50MB por restrições de memória/tempo excessivo de RAM no PIL)
-        if size <= 50:
+        # Esteganografia (apenas se < 100MB)
+        if size < 100:
             img_file = os.path.join(BENCHMARK_DIR, f"stego_img_{size}MB.png")
             img_out = os.path.join(BENCHMARK_DIR, f"stego_out_{size}MB.png")
             _generate_test_image(size, img_file)
@@ -164,7 +164,7 @@ def run_benchmarks(sizes_mb: list[int], logger: OperationLogger, progress_callba
             update_progress(f"Esteganografia Extrair {size}MB")
         else:
             # Pula passos
-            update_progress("Esteganografia Pulo (>50MB)")
-            update_progress("Esteganografia Pulo (>50MB)")
+            update_progress("Esteganografia Pulo (>100MB)")
+            update_progress("Esteganografia Pulo (>100MB)")
 
     print("Benchmark concluído!")

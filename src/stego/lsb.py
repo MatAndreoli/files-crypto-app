@@ -15,7 +15,7 @@ import numpy as np
 
 MAGIC_TEXT = b"STEG_TXT"      # Marcador para mensagens de texto
 MAGIC_FILE = b"STEG_FIL"      # Marcador para arquivos
-HEADER_SIZE = 8 + 4            # magic (8 bytes) + length (4 bytes) = 12 bytes
+HEADER_SIZE = 8 + 4           # magic (8 bytes) + length (4 bytes) = 12 bytes
 BITS_PER_BYTE = 8
 
 
@@ -30,31 +30,18 @@ def _get_capacity(image: Image.Image) -> int:
     return (total_bits // BITS_PER_BYTE) - HEADER_SIZE
 
 
-def _data_to_bits(data: bytes) -> list[int]:
-    """Converte bytes em lista de bits."""
-    bits = []
-    for byte in data:
-        for i in range(7, -1, -1):
-            bits.append((byte >> i) & 1)
-    return bits
+def _data_to_bits(data: bytes) -> np.ndarray:
+    """Converte bytes em um array NumPy de bits (Vetorizado)."""
+    return np.unpackbits(np.frombuffer(data, dtype=np.uint8))
 
 
-def _bits_to_bytes(bits: list[int]) -> bytes:
-    """Converte lista de bits em bytes."""
-    result = bytearray()
-    for i in range(0, len(bits), 8):
-        byte = 0
-        for j in range(8):
-            if i + j < len(bits):
-                byte = (byte << 1) | bits[i + j]
-            else:
-                byte = byte << 1
-        result.append(byte)
-    return bytes(result)
+def _bits_to_bytes(bits: np.ndarray) -> bytes:
+    """Converte um array NumPy de bits de volta para bytes."""
+    return np.packbits(bits).tobytes()
 
 
-def _embed_bits(image: Image.Image, bits: list[int]) -> Image.Image:
-    """Embute bits nos LSBs dos pixels da imagem."""
+def _embed_bits(image: Image.Image, bits: np.ndarray) -> Image.Image:
+    """Embute bits nos LSBs da imagem utilizando NumPy vetorial para evitar travamento da thread (GIL)."""
     pixels = np.array(image)
     flat = pixels.flatten()
 
@@ -64,18 +51,17 @@ def _embed_bits(image: Image.Image, bits: list[int]) -> Image.Image:
             f"Capacidade: {len(flat)} bits, Necessário: {len(bits)} bits."
         )
 
-    for i, bit in enumerate(bits):
-        flat[i] = (flat[i] & 0xFE) | bit
+    flat[:len(bits)] = (flat[:len(bits)] & 0xFE) | bits
 
     modified = flat.reshape(pixels.shape)
     return Image.fromarray(modified.astype(np.uint8))
 
 
-def _extract_bits(image: Image.Image, num_bits: int) -> list[int]:
-    """Extrai os LSBs dos pixels da imagem."""
+def _extract_bits(image: Image.Image, num_bits: int) -> np.ndarray:
+    """Extrai os LSBs dos pixels da imagem utilizando processos vetorizados do NumPy."""
     pixels = np.array(image)
     flat = pixels.flatten()
-    return [int(flat[i] & 1) for i in range(min(num_bits, len(flat)))]
+    return flat[:num_bits] & 1
 
 
 # ─── API Pública — Mensagens de texto ───────────────────────────────────────
