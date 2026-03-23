@@ -90,7 +90,7 @@
         }
         .slide-container {
             display: flex;
-            width: 500vw;
+            width: 600vw;
             height: 100vh;
             transition: transform 0.8s cubic-bezier(0.65, 0, 0.35, 1);
         }
@@ -123,6 +123,7 @@
 <a class="font-['Space_Grotesk'] tracking-tight uppercase text-xs font-bold text-[#e5e2e3]/60 hover:text-[#00dbe9] transition-colors transition-all duration-300" href="#slide3">Slide 03</a>
 <a class="font-['Space_Grotesk'] tracking-tight uppercase text-xs font-bold text-[#e5e2e3]/60 hover:text-[#00dbe9] transition-colors transition-all duration-300" href="#slide4">Slide 04</a>
 <a class="font-['Space_Grotesk'] tracking-tight uppercase text-xs font-bold text-[#e5e2e3]/60 hover:text-[#00dbe9] transition-colors transition-all duration-300" href="#slide5">Slide 05</a>
+<a class="font-['Space_Grotesk'] tracking-tight uppercase text-xs font-bold text-[#e5e2e3]/60 hover:text-[#00dbe9] transition-colors transition-all duration-300" href="#slide6">Slide 06</a>
 </nav>
 <div class="flex gap-4 items-center">
 <button class="material-symbols-outlined text-[#e5e2e3]/60 hover:text-[#00dbe9] active:scale-95 transition-all">info</button>
@@ -181,48 +182,50 @@
 <section class="slide flex flex-col justify-center" id="slide3">
 <div class="bg-mesh"></div>
 <h2 class="font-headline text-4xl font-bold tracking-tight text-primary mb-16 border-l-4 border-primary pl-8">Módulos Principais do Sistema</h2>
-<div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10 max-w-6xl">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl w-full mx-auto">
+    <!-- Card 1 -->
+    <div class="glass-card p-8 rounded-xl hover:shadow-[0_0_30px_rgba(0,219,233,0.08)] transition-all group flex items-start gap-6 border border-outline-variant/10">
+        <div class="w-14 h-14 rounded-full bg-primary-container/10 flex items-center justify-center shrink-0 group-hover:bg-primary-container/20 group-hover:scale-110 transition-all">
+            <span class="material-symbols-outlined text-3xl text-primary-fixed-dim">enhanced_encryption</span>
+        </div>
+        <div>
+            <h3 class="font-headline text-xl font-bold text-on-surface mb-3">Criptografia de Arquivos</h3>
+            <p class="text-on-surface-variant text-sm leading-relaxed">Cifra e decifra qualquer tipo de arquivo nativamente usando chaves públicas/privadas ou senha mestre. Otimizado GCM/CBC para suportar alta carga sem problemas.</p>
+        </div>
+    </div>
 
-<div class="flex gap-6 items-start group">
-    <div class="w-16 h-16 rounded-full bg-primary-container/10 flex items-center justify-center shrink-0 group-hover:bg-primary-container/30 transition-colors">
-        <span class="material-symbols-outlined text-3xl text-primary-fixed-dim">enhanced_encryption</span>
+    <!-- Card 2 -->
+    <div class="glass-card p-8 rounded-xl hover:shadow-[0_0_30px_rgba(112,0,255,0.08)] transition-all group flex items-start gap-6 border border-outline-variant/10">
+        <div class="w-14 h-14 rounded-full bg-secondary-container/10 flex items-center justify-center shrink-0 group-hover:bg-secondary-container/20 group-hover:scale-110 transition-all">
+            <span class="material-symbols-outlined text-3xl text-secondary">image</span>
+        </div>
+        <div>
+            <h3 class="font-headline text-xl font-bold text-on-surface mb-3">Motor Esteganográfico LSB</h3>
+            <p class="text-on-surface-variant text-sm leading-relaxed">Laboratório de ofuscação que permite esconder relatórios confidenciais, textos ou binários inteiros direto nos pixels das fotografias em formato PNG de capa perfeita.</p>
+        </div>
     </div>
-    <div>
-        <h3 class="font-headline text-xl font-bold text-on-surface mb-2">Criptografia de Arquivos</h3>
-        <p class="text-on-surface-variant text-sm leading-relaxed">Cifra e decifra qualquer tipo de arquivo nativamente usando chaves públicas/privadas ou senha mestre. Otimizado GCM/CBC para suportar alta carga sem problemas.</p>
-    </div>
-</div>
 
-<div class="flex gap-6 items-start group">
-    <div class="w-16 h-16 rounded-full bg-secondary-container/10 flex items-center justify-center shrink-0 group-hover:bg-secondary-container/30 transition-colors">
-        <span class="material-symbols-outlined text-3xl text-secondary">image</span>
+    <!-- Card 3 -->
+    <div class="glass-card p-8 rounded-xl hover:shadow-[0_0_30px_rgba(239,206,255,0.08)] transition-all group flex items-start gap-6 border border-outline-variant/10">
+        <div class="w-14 h-14 rounded-full bg-tertiary-container/10 flex items-center justify-center shrink-0 group-hover:bg-tertiary-container/20 group-hover:scale-110 transition-all">
+            <span class="material-symbols-outlined text-3xl text-tertiary-fixed-dim">analytics</span>
+        </div>
+        <div>
+            <h3 class="font-headline text-xl font-bold text-on-surface mb-3">Benchmarking e Relatórios</h3>
+            <p class="text-on-surface-variant text-sm leading-relaxed">Uma fábrica de testes embutida! Estressa o sistema sinteticamente e gera em tempo real PDFs detalhados combinando fpdf2, matriz geométrica Matplotlib e Pandas.</p>
+        </div>
     </div>
-    <div>
-        <h3 class="font-headline text-xl font-bold text-on-surface mb-2">Motor Esteganográfico LSB</h3>
-        <p class="text-on-surface-variant text-sm leading-relaxed">Laboratório de ofuscação que permite esconder relatórios confidenciais, textos ou binários inteiros direto nos pixels das fotografias em formato PNG de capa perfeita.</p>
-    </div>
-</div>
 
-<div class="flex gap-6 items-start group">
-    <div class="w-16 h-16 rounded-full bg-tertiary-container/10 flex items-center justify-center shrink-0 group-hover:bg-tertiary-container/30 transition-colors">
-        <span class="material-symbols-outlined text-3xl text-tertiary-fixed-dim">analytics</span>
+    <!-- Card 4 -->
+    <div class="glass-card p-8 rounded-xl hover:shadow-[0_0_30px_rgba(229,226,227,0.08)] transition-all group flex items-start gap-6 border border-outline-variant/10">
+        <div class="w-14 h-14 rounded-full bg-surface-container-highest/50 flex items-center justify-center shrink-0 group-hover:bg-surface-container-highest group-hover:scale-110 transition-all border border-outline-variant/10">
+            <span class="material-symbols-outlined text-3xl text-on-surface">database</span>
+        </div>
+        <div>
+            <h3 class="font-headline text-xl font-bold text-on-surface mb-3">Trilha de Auditoria (Logs)</h3>
+            <p class="text-on-surface-variant text-sm leading-relaxed">Banco SQLite silencioso que captura eventos passivos cruciais: algoritmos utilizados, tamanho do envelope em bytes e demografia dos tempos de processamento do app.</p>
+        </div>
     </div>
-    <div>
-        <h3 class="font-headline text-xl font-bold text-on-surface mb-2">Benchmarking e Relatórios</h3>
-        <p class="text-on-surface-variant text-sm leading-relaxed">Uma fábrica de testes embutida! Estressa o sistema sinteticamente e gera em tempo real PDFs detalhados combinando fpdf2, matriz geométrica Matplotlib e Pandas.</p>
-    </div>
-</div>
-
-<div class="flex gap-6 items-start group">
-    <div class="w-16 h-16 rounded-full bg-surface-container-highest/50 flex items-center justify-center shrink-0 group-hover:bg-surface-container-highest transition-colors border border-outline-variant/10">
-        <span class="material-symbols-outlined text-3xl text-on-surface">database</span>
-    </div>
-    <div>
-        <h3 class="font-headline text-xl font-bold text-on-surface mb-2">Trilha de Auditoria (Logs)</h3>
-        <p class="text-on-surface-variant text-sm leading-relaxed">Banco SQLite silencioso que captura eventos passivos cruciais: algoritmos utilizados, tamanho do envelope em bytes e demografia dos tempos de processamento do app.</p>
-    </div>
-</div>
-
 </div>
 </section>
 
@@ -263,8 +266,48 @@
 </table>
 </div>
 </section>
-<!-- Slide 5: Fechamento -->
-<section class="slide flex flex-col justify-center items-center text-center" id="slide5">
+<!-- Slide 5: Performance (Benchmark) -->
+<section class="slide flex flex-col justify-center" id="slide5">
+<div class="bg-mesh"></div>
+<h2 class="font-headline text-4xl font-bold tracking-tight text-primary mb-12 border-l-4 border-primary pl-8">Métricas de Performance</h2>
+<div class="w-full overflow-hidden rounded-xl bg-surface-container-lowest border border-outline-variant/10">
+<table class="w-full text-left border-collapse text-sm">
+<thead>
+<tr class="bg-surface-container-high">
+<th class="p-4 font-headline text-xs uppercase tracking-widest text-on-surface-variant">Carga Útil</th>
+<th class="p-4 font-headline text-xs uppercase tracking-widest text-on-surface-variant">AES-256-CBC</th>
+<th class="p-4 font-headline text-xs uppercase tracking-widest text-on-surface-variant">AES-256-GCM</th>
+<th class="p-4 font-headline text-xs uppercase tracking-widest text-on-surface-variant">RSA-Híbrido</th>
+<th class="p-4 font-headline text-xs uppercase tracking-widest text-on-surface-variant">Esteganografia LSB</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/10">
+<tr class="hover:bg-primary/5 transition-colors">
+<td class="p-4 font-bold text-primary-fixed-dim">10 MB</td><td class="p-4">0.054s / 0.046s</td><td class="p-4">0.068s / 0.065s</td><td class="p-4">0.050s / 0.063s</td><td class="p-4 text-error">4.200s / 0.708s</td>
+</tr>
+<tr class="hover:bg-primary/5 transition-colors">
+<td class="p-4 font-bold text-primary-fixed-dim">25 MB</td><td class="p-4">0.156s / 0.125s</td><td class="p-4">0.181s / 0.180s</td><td class="p-4">0.177s / 0.166s</td><td class="p-4 text-error">10.691s / 1.465s</td>
+</tr>
+<tr class="hover:bg-primary/5 transition-colors">
+<td class="p-4 font-bold text-primary-fixed-dim">50 MB</td><td class="p-4">0.271s / 0.203s</td><td class="p-4">0.337s / 0.338s</td><td class="p-4">0.276s / 0.332s</td><td class="p-4 text-error font-bold">20.531s / 3.156s</td>
+</tr>
+<tr class="hover:bg-primary/5 transition-colors">
+<td class="p-4 font-bold text-primary-fixed-dim">100 MB</td><td class="p-4">0.538s / 0.426s</td><td class="p-4">0.679s / 0.651s</td><td class="p-4">0.601s / 0.625s</td><td class="p-4 text-outline italic">Evitado (Limite)</td>
+</tr>
+<tr class="hover:bg-primary/5 transition-colors">
+<td class="p-4 font-bold text-primary-fixed-dim">250 MB</td><td class="p-4">1.297s / 1.169s</td><td class="p-4">1.547s / 1.460s</td><td class="p-4 text-secondary">5.126s / 1.533s</td><td class="p-4 text-outline italic">Evitado (Limite)</td>
+</tr>
+<tr class="hover:bg-primary/5 transition-colors">
+<td class="p-4 font-bold text-primary-fixed-dim">500 MB</td><td class="p-4 font-bold text-primary">2.741s / 2.231s</td><td class="p-4 text-primary">3.454s / 7.703s</td><td class="p-4 text-secondary">6.532s / 3.117s</td><td class="p-4 text-outline italic">Evitado (Limite)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p class="text-xs text-on-surface-variant/60 mt-4 italic">* Tempos exibidos no formato: (Cifrar ou Ocultar) / (Decifrar ou Extrair)</p>
+</section>
+
+<!-- Slide 6: Fechamento -->
+<section class="slide flex flex-col justify-center items-center text-center" id="slide6">
 <div class="bg-mesh"></div>
 <div class="max-w-3xl relative">
 <!-- Abstract Decorative Element -->
@@ -305,7 +348,7 @@
 <script>
         // Slide Logic (Simple state management for transitions)
         let currentSlide = 0;
-        const totalSlides = 5;
+        const totalSlides = 6;
         const slider = document.getElementById('main-slider');
         const nextBtn = document.getElementById('nextBtn');
         const prevBtn = document.getElementById('prevBtn');
