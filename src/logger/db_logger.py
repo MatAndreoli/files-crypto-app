@@ -119,24 +119,6 @@ class OperationLogger:
             ).fetchall()
             return [dict(row) for row in rows]
 
-    def get_logs_by_type(self, operation_type: str) -> list[dict]:
-        """Retorna logs filtrados por tipo de operação."""
-        with self._connect() as conn:
-            rows = conn.execute(
-                "SELECT * FROM operations WHERE operation_type = ? ORDER BY id DESC",
-                (operation_type,),
-            ).fetchall()
-            return [dict(row) for row in rows]
-
-    def get_logs_by_algorithm(self, algorithm: str) -> list[dict]:
-        """Retorna logs filtrados por algoritmo."""
-        with self._connect() as conn:
-            rows = conn.execute(
-                "SELECT * FROM operations WHERE algorithm = ? ORDER BY id DESC",
-                (algorithm,),
-            ).fetchall()
-            return [dict(row) for row in rows]
-
     def clear_logs(self):
         """Remove todos os logs."""
         with self._connect() as conn:

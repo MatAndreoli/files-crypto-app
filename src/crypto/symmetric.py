@@ -27,11 +27,6 @@ CHUNK_SIZE = 64 * 1024   # 64 KB para leitura em blocos
 
 # ─── Geração de chaves ──────────────────────────────────────────────────────
 
-def generate_aes_key() -> bytes:
-    """Gera uma chave AES-256 aleatória (32 bytes)."""
-    return secrets.token_bytes(AES_KEY_SIZE)
-
-
 def derive_key_from_password(password: str, salt: bytes | None = None) -> tuple[bytes, bytes]:
     """
     Deriva uma chave AES-256 a partir de uma senha usando PBKDF2-HMAC-SHA256.
@@ -56,19 +51,6 @@ def derive_key_from_password(password: str, salt: bytes | None = None) -> tuple[
     key = kdf.derive(password.encode("utf-8"))
     return key, salt
 
-
-def save_key_to_file(key: bytes, filepath: str) -> str:
-    """Salva uma chave AES em arquivo binário."""
-    os.makedirs(os.path.dirname(filepath) if os.path.dirname(filepath) else ".", exist_ok=True)
-    with open(filepath, "wb") as f:
-        f.write(key)
-    return filepath
-
-
-def load_key_from_file(filepath: str) -> bytes:
-    """Carrega uma chave AES de um arquivo binário."""
-    with open(filepath, "rb") as f:
-        return f.read()
 
 
 # ─── AES-256-CBC ─────────────────────────────────────────────────────────────

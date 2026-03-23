@@ -6,7 +6,6 @@ Gera arquivos de diversos tamanhos, executa os algoritmos de criptografia
 """
 
 import os
-import secrets
 from PIL import Image
 
 from logger.db_logger import OperationLogger, timed_operation

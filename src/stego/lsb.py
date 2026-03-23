@@ -5,7 +5,6 @@ Oculta mensagens de texto ou arquivos inteiros dentro de imagens PNG,
 alterando o bit menos significativo dos canais de cor de cada pixel.
 """
 
-import os
 import struct
 from PIL import Image
 import numpy as np

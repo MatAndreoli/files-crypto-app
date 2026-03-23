@@ -3,7 +3,6 @@ Interface Gráfica usando customtkinter.
 """
 
 import os
-import threading
 from tkinter import filedialog, messagebox
 import customtkinter as ctk
 
