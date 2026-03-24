@@ -17,11 +17,11 @@ from contextlib import contextmanager
 import sys
 
 if getattr(sys, 'frozen', False):
-    # If the application is run as a bundle, the PyInstaller bootloader
-    # extends the sys module by a flag frozen=True and sets the app 
-    # path into variable _MEIPASS'.
-    # For a one-file executable, sys.executable points to the exe
-    # sys._MEIPASS points to the temp directory where the bundle is unpacked
+    # Se a aplicação for executada como pacote, o bootloader do PyInstaller
+    # estende o módulo sys com uma flag frozen=True e define o caminho
+    # do app na variável _MEIPASS.
+    # Para um executável de arquivo único (one-file), sys.executable aponta para o exe
+    # e sys._MEIPASS aponta para o diretório temporário desempacotado
     base_dir = os.path.dirname(sys.executable)
     DB_DIR = os.path.join(base_dir, "logs")
 else:

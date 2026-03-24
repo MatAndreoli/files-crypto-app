@@ -21,7 +21,7 @@ PLOTS_DIR = os.path.join(REPORT_DIR, "plots")
 class PerformanceReport(FPDF):
     def header(self):
         self.set_font("Helvetica", "B", 15)
-        # Arial replaced by Helvetica
+        # Arial substituída por Helvetica
         self.cell(0, 10, "Relatório de Performance - Criptografia & Esteganografia", 0, 1, "C")
         self.set_font("Helvetica", "", 10)
         self.cell(0, 10, f"Gerado em: {datetime.now().strftime('%d/%m/%Y %H:%M')}", 0, 1, "C")
@@ -241,7 +241,7 @@ def create_pdf_report(logger: OperationLogger) -> str:
         pdf.cell(35, 6, log['algorithm'][:15], border=1)
         pdf.cell(20, 6, str(log['file_size_bytes']), border=1, align="R")
         pdf.cell(15, 6, f"{log['duration_seconds']:.2f}", border=1, align="R")
-        # limit key info
+        # Limita o tamanho visual da informação da chave
         ki = log['key_info'][:30] if log['key_info'] else ''
         pdf.cell(50, 6, ki, border=1)
         pdf.ln()
