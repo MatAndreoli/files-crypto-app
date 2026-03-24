@@ -2,28 +2,28 @@
 
 ## 1. Informações Gerais
 **Data:** 24 de março de 2026  
-**Membros da Equipe:** Matheus Andreoli e equipe (Até 3 integrantes)  
+**Membros da Equipe:** Matheus Andreoli e Gabriel Araújo  
 **Objetivo do Sistema:** Criptologia prática em formato visual englobando algoritmos vitais (Simétrica, Assimétrica e Esteganografia), com métricas baseadas em tempo e histórico auditável que comprovam a viabilidade dos modelos de ofuscação ensinados em aula.
 
 ---
 
-## 2. Descrição Detalhada da Aplicação (Funcionalidade)
+## 2. Funcionalidades da Aplicação
 
-O aplicativo utiliza a interface *CustomTkinter* para guiar os processamentos que ocorrem silenciosamente por baixo dos panos na camada do Python. As 4 molas mestras do software são:
+A aplicação possui uma interface gráfica desenvolvida com *CustomTkinter* e baseia-se em quatro módulos principais:
 
-1. **Camada de Criptografia Simétrica (AES-256):** 
-   Utiliza a cifra AES em dois modos de operação modernos (CBC e GCM). O método GCM, particularmente, brilha por garantir confidencialidade e também verificação de autenticidade no mesmo pulso, evitando manipulações no arquivo em trânsito. A chave-mestre responsável por decifrar os arquivos é gerada de uma senha inserida usando 100.000 iterações de salt pelo algoritmo PBKDF2-HMAC-SHA256, resistindo massivamente a ataques de força bruta.
+1. **Criptografia Simétrica (AES-256):** 
+   Utiliza a cifra AES nos modos de operação CBC e GCM. O modo GCM oferece confidencialidade e autenticação para os dados, alertando se houver alteração no arquivo. A chave criptográfica utilizada é gerada a partir da senha do usuário pelo algoritmo PBKDF2-HMAC-SHA256 (com 100.000 iterações), oferecendo proteção adicional contra ataques de força bruta.
 
 2. **Criptografia Assimétrica Híbrida (RSA-2048 + AES-256):**
-   Criptografar arquivos arbitrários puros aplicando somente a fórmula RSA causaria extrema ineficiência ou corrupção por limitações da matemática de fatoração. Para transpor essa ineficiência, a aplicação resolve o processo através da técnica de "Envelopamento Digital" (Híbrida):
-   *   O ficheiro é encriptado velozmente por uma nova chave AES-256 recém gerada só para ele (chamada *chave efêmera*).
-   *   A poderosa criptografia RSA (Chave Pública/Privada) usa seu cadeado **única e exclusivamente na pequenina chave AES**, não no arquivo inteiro. Isto viabiliza a remessa pela web mantendo a total integridade de arquivos colossais.
+   Devido à lentidão do método RSA convencional para arquivos grandes (causada pela matemática assintótica), o sistema emprega o Envelopamento Digital:
+   *   O arquivo real é criptografado rapidamente usando uma nova chave AES-256 gerada de forma automatizada (chave efêmera).
+   *   O algoritmo RSA (Chave Pública/Privada) usa sua segurança apenas para criptografar e trancar essa chave AES de tamanho reduzido. Isso garante eficiência no processamento de arquivos maiores e torna escalonável a troca das chaves entre os usuários.
 
-3. **Esteganografia através de Substituição (Técnica LSB):**
-   Módulo analítico em NumPy que se infiltra dentro de imagens do tipo PNG. A mágica da técnica "Least Significant Bit" na aplicação mascara as conversas ou os *binários (arquivos anexos inteiros)* alterando minimamente apenas o 1º bit visual do canal Alpha ou Colorido RGB das matrizes. Como resultado, o "hospedeiro" muda matematicamente de cor, mas o espectro visível para o olho humano se mantém invariável, garantindo excelente ofuscação (Security by Obscurity).
+3. **Esteganografia (Técnica LSB):**
+   Módulo que manipula matrizes através do pacote NumPy para ocultar dados dentro de imagens (PNG). A técnica LSB ("Least Significant Bit") funciona alterando apenas o último e menos importante bit numérico de cor dos pixels da foto verdadeira. Com isso, torna-se possível esconder mensagens ou até arquivos inteiros anexados sem deixar nenhuma distorção perceptível ao olho humano.
 
-4. **Trilha de Históricos e Logs Interceptativos:**
-   Através de *decorators* da linguagem (`@timed_operation`), qualquer instrução demandada por cliques na interface é interceptada por um log silencioso em plano de fundo no banco de dados incorporado SQLite (`operations.db`). Todos os registros guardam **horário de uso, arquivo demandado, ação escolhida e segundos exatos processados**, acessíveis nativamente pela aba de logs do aplicativo para a geração do relatório.
+4. **Trilha de Dados, Logs e Auditoria:**
+   A cada vez que uma funcionalidade é invocada pela interface gráfica, um registro estruturado é gravado automaticamente no banco de dados local SQLite (`operations.db`). Todos agrupam a data e horário oficial, descrição da ação usada, qual foi o arquivo alvo e o tempo de conclusão da operação em segundos para fins de auditorias. Esses mesmos dados moldam uma visualização dinâmica nativa dentro app.
 
 ---
 
@@ -46,19 +46,19 @@ Abaixo encontra-se a consolidação dos tempos do log real provido pelo avaliado
 | **500 MB**      | *Cifrar / Ocultar*     | 2.741s      | 3.454s      | 6.532s      | *(Limite evitado)*|
 | **500 MB**      | *Decifrar / Extrair*   | 2.231s      | 7.703s      | 3.117s      | *(Limite evitado)*|
 
-### Considerações e Análise (Desempenho dos Algoritmos):
+### Análise sobre os Tempos e o Desempenho dos Algoritmos:
 
-*   **A Soberania da Cifragem Simétrica (AES):** A perfomance computacional em ambos os AES foi incrivelmente veloz. A cifra é extremamente otimizada, consumindo ínfimos **~2.7 segundos para travar estupendos 500 Megabytes inteiros** através de modo CBC. A variante GCM possui um custo de processamento muito pequeno associado à necessidade analítica do bloco MAC (verificação de adulteração), provando excelente custo benefício.
-*   **O "Falso Peso" Híbrido (RSA):** Ao criptografar colossais 500MB, o sistema exigiu meros **6.5 segundos**. Caso a implementação se escorasse no algoritmo de RSA primário puro (trazendo o custo astronômico da força bruta do bloco matemático), o limite explodiria a taxa de falha. Este tempo só se manteve excelente em consequência ao método híbrido de trocas das chaves.
-*   **A Carga e o Pedágio Vetorial (Esteganografia LSB):** Em nítido contraste, ocultar dados dentro da imagem vetorial LSB obriga o computador a pagar um tributo de memória RAM avassalador. Embargar **meramente 50 MB puxou brutais 20 segundos**, sendo o correspondente a mais de 35 vezes o esforço criptográfico do AES e RSA combinados na marca análoga. Por este motivo de carga irresponsável sobre os limites de banda e processamento, as cargas gigantescas são cortadas estrategicamente.
+*   **Eficiência da Criptografia Simétrica (AES):** O tempo de processamento em ambos os modos AES apresentou rápido retorno por ser fundamentalmente simétrico. A operação de cifra consumiu apenas cerca de **2.7 segundos para um arquivo de 500 MB** fazendo uso da modalidade CBC. Já no método GCM houve aumento mínimo de custo atrelado ao registro obrigatório do seu bloco MAC, justificável pelo ganho adicional em autenticidade.
+*   **Resultados da Estruturação Híbrida (RSA):** Ao criptografar os maiores valores listados (500 MB), o sistema precisou de somente **6.5 segundos**. Caso este arquivo tentasse ser criptografado na sua completude via algoritmo RSA primário, todo o sistema apresentaria alta oneração por limitação de software. Essa marca baixa de tempo, portanto, valida estruturalmente o método de envelopamento de trocas de chave.
+*   **Alto Custo de Operação da Esteganografia (LSB):** Em contrapartida funcional, a tarefa para esconder os dados num espaço de imagem da memória demonstrou um tributo severo de uso da CPU (computador local). O ato de incorporar meros **50 MB em uma imagem consumiu cerca de 20 segundos**, que marca um coeficiente massivo de exigência frente aos testes combinados em AES e RSA. Devido a esse processamento oneroso e uso da RAM, a aplicação previne ativamente a injeção esteganográfica em massa para arquivos muito extensos, definindo os mesmos como limites evitáveis.
 
 ---
 
-## 4. Histórico de Telemetria Auditável (Amostra de Logs Brutos)
+## 4. Amostra de Logs da Interface (Auditoria)
 
-O aplicativo manteve e documentou perfeitamente todo o extrato de dados das execuções em seu banco de dados e nos arquivos do servidor (via exportação permitida *csv/txt*). O excerto mais importante dos tempos oficiais do simulado de grande porte realizado nesta versão reflete o histórico das coletas da auditoria. 
+O aplicativo manteve e documentou com êxito os registros nos bancos de dados internos e relatórios exportados do aplicativo. O trecho delimitado a seguir resume as capturas e dados coletados das principais sessões do sistema avaliadas durante a submissão dos testes.
 
-*(Obs: Os arquivos inteiros manipulados para gerar essa carga variam entre tamanhos brutos de teste (`test_10MB.bin`, chegando até massas de `test_500MB.bin`). Foram omitidos os blocos intermediários nesta reprodução de relatório devido ao amplo volume emitido pelo software).*
+*(Nota: O ambiente foi alimentado por diferentes tamanhos massivos estáticos que flutuaram de `test_10MB.bin` a `test_500MB.bin`. Devido à quantidade gerada de logísticas intermediárias durante o mapeamento de teste prático, apenas uma seleção parcial representativa foi incluída nos códigos abaixo nestes cenários).*
 
 ```log
 [2026-03-22 17:33:36.650] Benchmark Decrypt (RSA-2048 Híbrido) - Status: success - Tempo: 3.117075s
